@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="1200 initial-scale=1.0" />
+    <title>BHARAT SOFTWARE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body { margin: 10px; font-family: 'Segoe UI', Arial, Helvetica, sans-serif; color: #222; font-size: 12px; }
+
+      #print-wrapper { border: 2px solid #2c3e50; max-width: 1200px; width: 100%; margin: 0 auto; }
+      #print-area { padding: 0; }
+
+      .no-print { margin-bottom: 8px; }
+      .no-print button { padding: 6px 18px; margin-right: 6px; cursor: pointer; border: 1px solid #2c3e50; background: #fff; color: #2c3e50; border-radius: 4px; font-size: 13px; }
+      .no-print button:hover { background: #2c3e50; color: #fff; }
+
+      .tbl { display: table; width: 100%; border-spacing: 0; }
+      .tbl-row { display: table-row; }
+      .tbl-cell { display: table-cell; }
+
+      .b { border: 1px solid #2c3e50; }
+      .br { border-right: 1px solid #2c3e50; }
+
+      .tc { text-align: center; }
+      .tl { text-align: left; }
+      .tr { text-align: right; }
+      .vm { vertical-align: middle; }
+      .vt { vertical-align: top; }
+      .vb { vertical-align: bottom; }
+
+      .fw-b { font-weight: 700; }
+      .inline-block { display: inline-block; }
+
+      .section-header { background: #2c3e50; color: #fff; padding: 3px 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+      .sub-header { background: #f0f2f4; font-weight: 600; font-size: 11px; }
+
+      .p { padding: 2px 5px; }
+      .py { padding: 2px 0; }
+      .gap { margin-top: 3px; }
+      .mt { margin-top: 4px; }
+
+      hr { border: none; border-top: 1px solid #2c3e50; margin: 6px 0; }
+
+      .fill { border-bottom: 1px solid #2c3e50; width: 100%; display: inline-block; }
+      .lbl { color: #666; font-size: 11px; white-space: nowrap; }
+      .val { font-weight: 700; font-size: 12px; }
+
+      @media print {
+        .no-print { display: none !important; }
+        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .section-header, .sub-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="no-print">
+      <button onclick="printDocument()"><i class="fas fa-print"></i> Print</button>
+      <button onclick="downloadPDF(this)"><i class="fas fa-file-pdf"></i> Download PDF</button>
+    </div>
+
+    <div id="print-wrapper">
+      <div id="print-area">
+
+        <!-- HEADER -->
+        <div class="tbl">
+          <div class="tbl-row">
+            <div class="tbl-cell tc vm" style="width: 13%; padding: 5px 4px;">
+              <img src="https://newversion.logisticsoftware.in/img/bs.png" alt="BHARAT SOFTWARE" style="width: 200px; height: auto;" />
+            </div>
+            <div class="tbl-cell tc vm" style="width: 74%; padding: 5px 4px; line-height: 1.3;">
+              <div style="font-size: 10px; color: #666; letter-spacing: 0.3px;">SUBJECT TO DELHI JURISDICTION</div>
+              <div style="font-size: 24px; font-weight: 700; color: #2c3e50; letter-spacing: 1.5px; margin: 1px 0;">BHARAT SOFTWARE PVT LTD</div>
+              <div style="font-size: 13px; font-weight: 600; color: #34495e; letter-spacing: 0.5px;">FLEET OWNERS &amp; TRANSPORT CONTRACTORS</div>
+              <div style="font-size: 11px; color: #c0392b; margin-top: 1px;">20, KAPIL VIHAR, PITAMPURA, NEW DELHI. &nbsp; Mob : 8076876602</div>
+            </div>
+            <div class="tbl-cell" style="width: 3%;"></div>
+            <div class="tbl-cell tc vm" style="width: 10%; padding: 5px 4px;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=https%3A%2F%2Fnewversion.logisticsoftware.in%2Freport%2Ftrack_gr2%2Fprint%3Fgr_id%3D681%26from_track%3D1%26cc%3DBHARAT+SOFTWARE+PVT+LTD&choe=UTF-8" alt="QR" style="width: 75px; height: 75px;" />
+              <div style="text-align: center; font-size: 9px; color: #666; margin-top: 1px; letter-spacing: 0.3px;">Scan To Track</div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+        <!-- TOP ROW -->
+        <div class="tbl mt">
+          <div class="tbl-row">
+
+            <!-- LEFT -->
+            <div class="tbl-cell vt" style="width: 60%; padding: 3px 5px 3px 3px;">
+              <div class="lbl" style="padding: 1px 0 2px; margin-bottom: 5px; font-size: 11px; color: #666;">
+                Address of Delivery Office
+                <span class="fill" style="width: 180px;">BARMER</span>
+              </div>
+
+              <div class="tbl">
+                <div class="tbl-row">
+                  <div class="tbl-cell" style="width: 50%; border: 1px solid #2c3e50; vertical-align: top;">
+                    <div class="section-header tc" >CONSIGNMENT NOTE</div>
+                    <div class="tbl" style="font-size: 11px; line-height: 1.4;">
+                      <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 28%;">No.</div><div class="tbl-cell p val" style="width: 72%;"><span class="fill">BMR-000001</span></div></div>
+                      <div class="tbl-row"><div class="tbl-cell p lbl">Date</div><div class="tbl-cell p val"><span class="fill">08-07-2026</span></div></div>
+
+                      <div class="tbl-row"><div class="tbl-cell p lbl">GST</div><div class="tbl-cell p val"><span class="fill">07AAICB5305J1ZQ</span></div></div>
+
+                      <div class="tbl-row"><div class="tbl-cell p lbl">PAN</div><div class="tbl-cell p val"><span class="fill">AAICB5305J</span></div></div>
+                    </div>
+                  </div>
+                  <div class="tbl-cell" style="width: 50%; border: 1px solid #2c3e50; border-left: none; vertical-align: top;">
+                    <div class="section-header tc">A/C</div>
+                    <div class="tbl" style="font-size: 11px; line-height: 1.4;">
+                      <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 34%;">BANK NAME</div><div class="tbl-cell p" style="width: 66%;"><span class="fill">HDFC BANK</span></div></div>
+                      <div class="tbl-row"><div class="tbl-cell p lbl">IFSC</div><div class="tbl-cell p"><span class="fill">HDFC0001234</span></div></div>
+
+                      <div class="tbl-row"><div class="tbl-cell p lbl">A/C No.</div><div class="tbl-cell p"><span class="fill">054000011234</span></div></div>
+
+                      <div class="tbl-row"><div class="tbl-cell p lbl">PAN</div><div class="tbl-cell p val"><span class="fill">AAICB5305J</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="tbl-cell vt" style="width: 40%; padding: 3px 3px 3px 0;">
+              <div class="tc fw-b" style="font-size: 13px; color: #2c3e50; letter-spacing: 0.5px;">AT OWNER'S RISK</div>
+              <div class="tc fw-b" style="color: #c0392b; font-size: 19px; letter-spacing: 1px; margin: 1px 0;">CONSIGNEE COPY</div>
+              <div class="tc fw-b p" style="border: 1.5px solid #c0392b; color: #c0392b; font-size: 11px; letter-spacing: 0.3px; background: #fdf2f2; margin-bottom: 2px;">GSTIN NO. <span data-gstin-header="1" style="color: #c0392b;">07AAICB5305J1ZQ</span></div>
+
+              <div class="tbl" style="font-size: 11px; line-height: 1.5;">
+                <div class="tbl-row"><div class="tbl-cell lbl py" style="width: 36%;">Vehicle No.</div><div class="tbl-cell py"><span class="fill">HR38B1234</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell lbl" style="padding: 2px 0;">E-way Bill No.</div><div class="tbl-cell val" style="padding: 2px 0;"><span class="fill">786757557656</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell lbl" style="padding: 2px 0;">Invoice No.</div><div class="tbl-cell val" style="padding: 2px 0;"><span class="fill">T287197</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell lbl" style="padding: 2px 0;">Shipment</div><div class="tbl-cell" style="padding: 2px 0;"><span class="fill">GR-2026-001</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell lbl" style="padding: 2px 0;">DO No.</div><div class="tbl-cell" style="padding: 2px 0;"><span class="fill">DO-78654</span></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- CONSIGNOR / CONSIGNEE + ROUTE -->
+        <div class="tbl gap">
+          <div class="tbl-row">
+
+            <!-- LEFT -->
+            <div class="tbl-cell vt" style="width: 68%; padding: 0 5px 0 3px; ">
+
+              <div class="tbl" style="border: 1px solid #2c3e50;">
+                <div class="tbl-row"><div class="tbl-cell section-header">CONSIGNOR</div></div>
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 20%;">Name &amp; Address</div><div class="tbl-cell p val" style="width: 80%;"><span class="fill">ABC LIMITED</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 20%;">Phone</div><div class="tbl-cell p val" style="width: 20%;">7737475137</div><div class="tbl-cell p lbl tc" style="width: 30%;">GSTIN NO.</div><div class="tbl-cell p val" style="width: 30%;"><span class="fill">06AABCO9961E1ZB</span></div></div>
+              </div>
+
+              <div class="tbl" style="border: 1px solid #2c3e50; margin-top: 3px;">
+                <div class="tbl-row"><div class="tbl-cell section-header">CONSIGNEE</div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 20%;">Name &amp; Address</div><div class="tbl-cell p val" style="width: 80%; line-height: 1.35;"><span class="fill">BALAJI ENTERPRISES, shop no 10-11, GANESH</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 20%;">GSTIN NO.</div><div class="tbl-cell p val" style="width: 80%;"><span class="fill">08FTKPS9518F1Z0</span></div></div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="tbl-cell vt" style="width: 32%; padding: 0 3px 0 0;">
+              <div class="tbl b" style="height: 100%;">
+                <div class="tbl-row"><div class="tbl-cell sub-header p tc">ROUTE</div></div>
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 25%;">From</div><div class="tbl-cell p val" style="width: 75%;"><span class="fill">BARMER</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 25%;">To</div><div class="tbl-cell p val" style="width: 75%;"><span class="fill">DELHI</span></div></div>
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 25%;">EDD</div><div class="tbl-cell p val" style="width: 75%;"><span class="fill"></span></div></div>
+                <div class="tbl-row"><div class="tbl-cell p lbl" style="width: 25%;">Del.</div><div class="tbl-cell p val" style="width: 75%;"><span class="fill"></span></div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- GOODS + RATE -->
+        <div class="tbl gap">
+          <div class="tbl-row">
+
+            <!-- GOODS -->
+            <div class="tbl-cell vt" style="width: 73%; padding-right: 4px;">
+              <div class="tbl b">
+                <div class="tbl-row">
+                  <div class="tbl-cell tc p br sub-header" style="width: 16%;">Packages</div>
+                  <div class="tbl-cell tc fw-b br sub-header" style="width: 52%;">Description (Said to Contain)</div>
+                  <div class="tbl-cell sub-header" style="width: 32%;">
+                    <div class="tbl">
+                      <div class="tbl-row"><div class="tbl-cell tc fw-b p">WEIGHT</div></div>
+                      <div class="tbl-row"><div class="tbl-cell tc p br" style="width: 50%; font-weight: 600;">Actual</div><div class="tbl-cell tc p" style="width: 50%; font-weight: 600;">Charged</div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tbl-row">
+                  <div class="tbl-cell tc vm br p" style="height: 80px; font-size: 13px;"><span class="fill">20</span></div>
+                  <div class="tbl-cell tc vt br p" style="font-size: 12px; line-height: 1.35;">
+                    BOX (CARTON)
+                    <div class="tl fw-b" style="margin-top: 30px; font-size: 11px; display: flex; align-items: center;">INVOICE : <span class="fill" style="width: 120px;">T287197</span><button class="no-print" onclick="fillData()" style="margin-left: 8px; padding: 2px 10px; font-size: 11px; cursor: pointer; border: 1px solid #2c3e50; background: #2c3e50; color: #fff; border-radius: 3px; white-space: nowrap;"><i class="fas fa-database"></i> Fill Data</button></div>
+                  </div>
+                  <div class="tbl-cell">
+                    <div class="tbl" style="height: 80px;">
+                      <div class="tbl-row"><div class="tbl-cell tc vm br p" style="width: 50%; font-size: 12px;"><span class="fill">3000.000</span></div><div class="tbl-cell tc vm p" style="width: 50%; font-size: 12px;"><span class="fill">3000.000</span></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RATE -->
+            <div class="tbl-cell vt" style="width: 27%;">
+              <div class="tbl b" style="height: 100%;">
+                <div class="tbl-row"><div class="tbl-cell tc br p sub-header" style="width: 35%;">Rate</div><div class="tbl-cell tc p sub-header" style="width: 65%;">TO PAY / PAID</div></div>
+                <div class="tbl-row"><div class="tbl-cell br p sub-header" style="width: 35%;"></div><div class="tbl-cell tc br p sub-header" style="width: 42%;">Rs.</div><div class="tbl-cell tc p sub-header" style="width: 23%;">P.</div></div>
+
+                <div class="tbl-row"><div class="tbl-cell tc br p" style="font-size: 11px;"><span class="fill" data-rate-field="rate"></span></div><div class="tbl-cell tc br p" style="font-size: 11px;"><span class="fill" data-rate-field="freight"></span></div><div class="tbl-cell tc p" style="font-size: 11px;"><span class="fill" data-rate-field="freightPaise">00</span></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p" style="font-size: 11px; color: #666;">GST</div><div class="tbl-cell tc p" style="border-left: 1px solid #2c3e50; font-size: 11px;"><span class="fill" data-rate-field="gst">0</span></div><div class="tbl-cell p" style="border-left: 1px solid #2c3e50;"></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p" style="font-size: 11px; color: #666;">Boarding</div><div class="tbl-cell tc p" style="border-left: 1px solid #2c3e50; font-size: 11px;"><span class="fill" data-rate-field="boarding"></span></div><div class="tbl-cell p" style="border-left: 1px solid #2c3e50;"></div></div>
+
+                <div class="tbl-row"><div class="tbl-cell p" style="font-size: 11px; color: #666;">Loading</div><div class="tbl-cell tc p" style="border-left: 1px solid #2c3e50; font-size: 11px;"><span class="fill" data-rate-field="loading"></span></div><div class="tbl-cell p" style="border-left: 1px solid #2c3e50;"></div></div>
+
+                <div class="tbl-row" style="background: #f0f2f4;"><div class="tbl-cell fw-b p" style="font-size: 11px;">Total</div><div class="tbl-cell tc fw-b p" style="border-left: 1px solid #2c3e50; font-size: 12px;">17100</div><div class="tbl-cell tc fw-b p" style="border-left: 1px solid #2c3e50; font-size: 12px;">00</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <hr>
+
+        <!-- FOOTER -->
+        <div class="tbl mt">
+          <div class="tbl-row">
+            <div class="tbl-cell p vt" style="width: 42%; font-size: 11px; line-height: 1.4;">
+              <span class="lbl">DECLARED VALUE RS.</span>
+              <span class="fw-b" style="color: #2c3e50;"><span class="fill" data-dec-value="1" style="width: 100px;">27200</span></span>
+              <div style="margin-top: 3px; color: #555;">Not Responsible for Leakages &amp; Breakage.</div>
+              <div style="color: #555;">Received acknowledge within 15 days after</div>
+              <div style="color: #555;">We are not responsible for the balance payment.</div>
+            </div>
+            <div class="tbl-cell vt" style="width: 32%; padding: 3px 5px;">
+              <div class="fw-b tc" style="font-size: 11px; color: #2c3e50; margin-bottom: 2px;">G.S.T PAYABLE</div>
+              <div class="tbl" style="font-size: 11px; width: auto; margin: 0 auto;">
+                <div class="tbl-row"><div class="tbl-cell tc vm" style="width: 18px; padding: 1px 0;"><span class="inline-block gst-check" data-gst="Consignor" style="width: 13px; height: 13px; border: 1.5px solid #2c3e50; text-align: center; line-height: 13px; font-size: 10px;">&#10003;</span></div><div class="tbl-cell" style="padding: 1px 0;">CONSIGNOR</div></div>
+                <div class="tbl-row"><div class="tbl-cell tc vm" style="width: 18px; padding: 1px 0;"><span class="inline-block gst-check" data-gst="Consignee" style="width: 13px; height: 13px; border: 1.5px solid #2c3e50;"></span></div><div class="tbl-cell" style="padding: 1px 0;">CONSIGNEE</div></div>
+                <div class="tbl-row"><div class="tbl-cell tc vm" style="width: 18px; padding: 1px 0;"><span class="inline-block gst-check" data-gst="Transporter" style="width: 13px; height: 13px; border: 1.5px solid #2c3e50;"></span></div><div class="tbl-cell" style="padding: 1px 0;">TRANSPORTER</div></div>
+              </div>
+            </div>
+            <div class="tbl-cell vm tc" style="width: 26%; padding: 2px 5px;">
+              <div class="fw-b" style="font-size: 11px; color: #2c3e50; letter-spacing: 0.3px;">FOR BHARAT SOFTWARE PVT LTD</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+      var currentOrientation = "portrait";
+
+      var data = {"id":33440,"branch_id":5,"prefix":null,"max_number":40160,"gr_type":"Manual","gr_number":"040160","gr_date":"2026-03-12","gr_time":"10:31:00","source_id":742,"source_name":"PATALGANG","destination_id":63,"destination_name":"NAGPUR","fssain":null,"tpt_mode":"Surface","vehicle_id":2821,"vehicle_number":"Mh43bx1291","driver_id":null,"driver_name":null,"driver_mob_number":null,"driver_payment_from":null,"driver_payment_amt":"0.00","vehicle_type":"C20","edd":"2026-03-12","pay_mode":"TBB","delivery_pt":"Door Delivery","consignor_id":10,"consignor_name":"HANSOL LOGISTICS INDIA PVT LTD","consignor_branch_id":3,"consignor_gst_number":null,"consignor_phone_number":null,"consignor_address":null,"consignee_id":24,"consignee_name":"EROS MOTORS","consignee_branch_id":null,"consignee_gst_number":null,"consignee_phone_number":null,"consignee_address":null,"consignor_branch_name":"PATALGANGA","consignee_branch_name":null,"acc_party_id":194,"acc_party_branch_id":null,"total_pkg":41,"total_material_weight":"600.000","total_km":"0.00","total_chg_qty":"600.000","total_desc_value":"0.00","total_invoice_value":"0.00","p_marka":null,"remarks":null,"booking_comm_percent":null,"booking_comm_rate":null,"booking_comm_charged_on":"FREIGHT","booking_comm_amount":null,"eway_pic":null,"other_pic":null,"print_at_save":0,"freight":"0.00","gr_chg":"0.00","disc_percent":"0.00","disc_amount":"0.00","green_tax":"0.00","kanta":"0.00","detention":"0.00","payment_dynamic_fields":"{\"loading_chg\":0,\"unloading_chg\":0,\"load_halting\":0,\"unload_halting\":0,\"multi_point\":0,\"others\":0}","gst_paid_by":"Consignor","total_without_gst":"0.00","igst_percent":"0.00","cgst_percent":"0.00","sgst_percent":"0.00","igst_amount":"0.00","cgst_amount":"0.00","sgst_amount":"0.00","total_without_rounding":"0.00","rounded_off":"0.00","grand_total":"0.00","po_no":null,"shipment_number":null,"lorry_hire_from":null,"dr_on_account":null,"hire_remarks":null,"lh_freight":"0.00","lh_net_freight":"0.00","lh_payment_acc1":null,"lh_payment_acc2":null,"lh_payment_acc3":null,"diesel_acc1":null,"diesel_acc2":null,"diesel_qty1":"0.00","diesel_qty2":"0.00","diesel_rate1":"0.00","diesel_rate2":"0.00","diesel_amt1":"0.00","diesel_amt2":"0.00","lh_advance":"0.00","lh_payment":"0.00","lh_payment2":"0.00","lh_balance":"0.00","income_account_id":null,"is_cancelled":0,"paid_status":0,"lh_paid_status":0,"cancel_status":0,"freight_bill":0,"way_exp_bill":0,"fin_year":"2025-2026","created_by":18,"updated_by":null,"created_at":"2026-03-13T10:33:00.000000Z","updated_at":"2026-03-13T10:33:00.000000Z","truck_status":null,"current_location":null,"status_date":null,"arrival_date":null,"unloading_date":null,"halting_days":null,"destination2_id":null,"destination2_name":null,"do_id":null,"do_number":null,"unload_rate":"0.00","unload_amt":"0.00","toll_amt":"0.00","diversion_rate":"0.00","diversion_amt":"0.00","start_km":null,"crossing":0,"delivery_status":0,"gr_rate":null,"gr_unit":"KG","billing_branch":5,"loading_unloading_bill":0,"halting_bill":0,"non_contract_bill":0,"transit_days":null,"consignor_state":null,"consignee_state":null,"halting_rate":"0.00","load_halting_days":0,"unload_halting_days":0,"hsn_code":null,"seal_number":null,"branch":{"id":5,"branch_name":"MUMBAI","branch_code":"BOM"},"source":{"id":742,"station_name":"PATALGANG"},"destination":{"id":63,"station_name":"NAGPUR"},"consignor":{"id":10,"party_name":"HANSOL LOGISTICS INDIA PVT LTD","city":"CHENNAI","state":"Tamil Nadu","tele_number":null,"gst_number":"33AACCH1006J1Z5","pan_number":"AACCH1006J","pincode":"600032","address1":"4TH FLOOR,BLOCK 2''THE LORDS'' NO 1 & 2 NORTHERN STAIRCASE AREA,\t\t\t\t\t THRI-VI-KA INDUSTRIAL AREA,EKATTUTHANGAL,GUINDY,CHENNAI-600032"},"consignee":{"id":24,"party_name":"EROS MOTORS","city":null,"state":null,"tele_number":null,"gst_number":null,"pan_number":null,"pincode":null,"address1":null},"vehicle":{"id":2821,"vehicle_number":"Mh43bx1291","vehicle_type":null},"driver":null,"gr_desc":[{"id":216137,"gr_id":33440,"gr_number":"040160","material_id":28,"destination_id":63,"packing_method":"CARTON","pkg":41,"nos":null,"material_weight":"600.000","km":null,"chg_unit":"KG","chg_qty":"600.000","rate":null,"total":null,"invoice_number":"T287197","invoice_date":"2026-03-12","invoice_value":null,"payment_dynamic_fields":"{}","free_pkgs":0,"fin_year":"2025-2026","created_at":"2026-03-13T10:33:00.000000Z","updated_at":"2026-03-13T10:33:52.000000Z","material":{"id":28,"material_name":"BOX`"}}],"eway_details":[],"acc_party":{"id":194,"account_name":"HANSOL LOGISTICS INDIA PVT LTD","account_type":"Party","party":{"id":10,"account_id":194,"party_name":"HANSOL LOGISTICS INDIA PVT LTD","city":"CHENNAI","state":"Tamil Nadu","tele_number":null,"gst_number":"33AACCH1006J1Z5","pan_number":"AACCH1006J","pincode":"600032","address1":"4TH FLOOR,BLOCK 2''THE LORDS'' NO 1 & 2 NORTHERN STAIRCASE AREA,\t\t\t\t\t THRI-VI-KA INDUSTRIAL AREA,EKATTUTHANGAL,GUINDY,CHENNAI-600032"}},"acc_party_branch":null,"consignor_branch":{"id":3,"branch_name":"PATALGANGA"},"consignee_branch":null};
+
+      function fmtDate(d) {
+        if (!d) return "";
+        var p = d.split("-");
+        return p[2] + "-" + p[1] + "-" + p[0];
+      }
+
+      var gr = data;
+      var con = gr.consignor || {};
+      var cone = gr.consignee || {};
+
+      (function render() {
+        function byText(container, text, tag) {
+          tag = tag || "span";
+          var els = container.querySelectorAll(tag);
+          for (var i = 0; i < els.length; i++) {
+            if (els[i].textContent.trim() === text) return els[i].parentElement;
+          }
+          return null;
+        }
+
+        var grNo = byText(document, "BMR-000001");
+        if (grNo) grNo.textContent = (gr.branch ? gr.branch.branch_code : "") + "-" + gr.gr_number;
+
+        var dateEl = byText(document, "08-07-2026");
+        if (dateEl) dateEl.textContent = fmtDate(gr.gr_date);
+
+        function setFill(parent, oldVal, newVal) {
+          if (!parent) return;
+          var spans = parent.querySelectorAll("span");
+          for (var i = 0; i < spans.length; i++) {
+            if (spans[i].textContent.trim() === oldVal) { spans[i].textContent = newVal; return; }
+          }
+        }
+
+        setFill(document, "07AAICB5305J1ZQ", con.gst_number || "");
+        setFill(document, "AAICB5305J", con.pan_number || "");
+        setFill(document, "HR38B1234", gr.vehicle_number || "");
+        setFill(document, "786757557656", (gr.eway_details && gr.eway_details.length > 0 ? gr.eway_details[0].eway_number : "") || "");
+        setFill(document, "T287197", (gr.gr_desc && gr.gr_desc.length > 0 ? gr.gr_desc[0].invoice_number : "") || "");
+        setFill(document, "GR-2026-001", "");
+        setFill(document, "DO-78654", gr.do_number || "");
+
+        var routeFills = document.querySelectorAll(".tbl-cell.vt[style*='width: 32%'] .fill");
+        if (routeFills.length >= 4) {
+          routeFills[0].textContent = gr.source_name || "";
+          routeFills[1].textContent = gr.destination_name || "";
+          routeFills[2].textContent = fmtDate(gr.edd) || "";
+          routeFills[3].textContent = gr.delivery_pt || "";
+        }
+
+        setFill(document, "BARMER", gr.destination_name || "");
+
+        var consignorAddr = con.party_name || gr.consignor_name;
+        if (con.address1) consignorAddr += ", " + con.address1.replace(/\t+/g, " ");
+        if (con.city) consignorAddr += ", " + con.city;
+        if (con.pincode) consignorAddr += " - " + con.pincode;
+        setFill(document, "ABC LIMITED", consignorAddr);
+        setFill(document, "06AABCO9961E1ZB", con.gst_number || "");
+
+        var phoneEl = byText(document, "7737475137");
+        if (phoneEl) phoneEl.textContent = con.tele_number || "";
+
+        var consigneeAddr = cone.party_name || gr.consignee_name;
+        if (cone.address1) consigneeAddr += ", " + cone.address1;
+        if (cone.city) consigneeAddr += ", " + cone.city;
+        setFill(document, "BALAJI ENTERPRISES, shop no 10-11, GANESH", consigneeAddr);
+        setFill(document, "08FTKPS9518F1Z0", cone.gst_number || "");
+
+        if (gr.gr_desc && gr.gr_desc.length > 0) {
+          var gd = gr.gr_desc[0];
+          setFill(document, "20", gd.pkg || "");
+          setFill(document, "3000.000", gd.material_weight || "");
+
+          var chgFills = document.querySelectorAll(".tbl-cell.tc.vm.p .fill");
+          if (chgFills.length > 0) chgFills[chgFills.length - 1].textContent = gd.chg_qty || "";
+
+          var invLabel = document.querySelector(".tl.fw-b");
+          if (invLabel) invLabel.textContent = "INVOICE : " + (gd.invoice_number || "");
+        }
+
+        setFill(document, "27200", gr.total_desc_value || "0.00");
+
+        var gstHeader = document.querySelector("[data-gstin-header]");
+        if (gstHeader) gstHeader.textContent = con.gst_number || "";
+
+        var gstBy = (gr.gst_paid_by || "").toLowerCase();
+        document.querySelectorAll(".gst-check").forEach(function(el) {
+          var label = (el.getAttribute("data-gst") || "").toLowerCase();
+          el.innerHTML = (label === gstBy) ? "&#10003;" : "";
+        });
+
+        var vType = gr.vehicle_type || "Rate";
+        var h1 = document.querySelectorAll(".tbl-cell.tc.br.p.sub-header");
+        if (h1.length > 0) h1[0].textContent = vType + " / Rate";
+        var h2 = document.querySelectorAll(".tbl-cell.tc.p.sub-header");
+        if (h2.length > 0) h2[0].textContent = gr.pay_mode || "TO PAY / PAID";
+
+        var grand = (parseFloat(gr.grand_total) || 0).toFixed(2);
+        var totalRow = document.querySelectorAll(".tbl-row[style*='background: #f0f2f4'] .tc.fw-b.p");
+        if (totalRow.length >= 2) {
+          var gp = grand.split(".");
+          totalRow[0].textContent = gp[0];
+          totalRow[1].textContent = gp[1] || "00";
+        }
+
+        try {
+          var dyn = JSON.parse(gr.payment_dynamic_fields || "{}");
+          document.querySelectorAll("[data-rate-field]").forEach(function(el) {
+            var f = el.getAttribute("data-rate-field");
+            if (f === "rate" && gr.gr_desc && gr.gr_desc.length > 0) el.textContent = gr.gr_desc[0].rate || "";
+            else if (f === "freight") el.textContent = (parseFloat(gr.freight) || 0).toFixed(2);
+            else if (f === "freightPaise") el.textContent = (parseFloat(gr.freight) || 0).toFixed(2).split(".")[1] || "00";
+            else if (f === "gst") el.textContent = (parseFloat(gr.igst_amount || 0) + parseFloat(gr.sgst_amount || 0)).toFixed(2);
+            else if (f === "boarding") el.textContent = (dyn.load_halting || 0) > 0 ? (dyn.load_halting || 0).toFixed(2) : "";
+            else if (f === "loading") el.textContent = (dyn.loading_chg || 0) > 0 ? (dyn.loading_chg || 0).toFixed(2) : "";
+          });
+        } catch(e) {}
+      })();
+
+      function fillData() {
+        alert("Fill Data clicked — implement your logic here.");
+      }
+
+      async function printDocument() {
+        var el = document.getElementById("print-area");
+        if (!el) return;
+        var imgs = el.querySelectorAll("img");
+        for (var i = 0; i < imgs.length; i++) {
+          var img = imgs[i];
+          if (img.src && img.src.indexOf("http") === 0) {
+            try {
+              var resp = await fetch(img.src);
+              var blob = await resp.blob();
+              var reader = new FileReader();
+              var dataUrl = await new Promise(function (resolve) {
+                reader.onload = function () { resolve(reader.result); };
+                reader.readAsDataURL(blob);
+              });
+              img.src = dataUrl;
+            } catch (e) { /* skip */ }
+          }
+        }
+        setTimeout(function () { window.print(); }, 200);
+      }
+
+      async function downloadPDF(btn) {
+        try {
+          if (!window.jspdf || !window.jspdf.jsPDF) {
+            alert("PDF engine loading...");
+            return;
+          }
+          var el = document.getElementById("print-area");
+          if (!el) return;
+          btn.disabled = true;
+          btn.textContent = "Generating...";
+
+          var imgs = el.querySelectorAll("img");
+          for (var i = 0; i < imgs.length; i++) {
+            var img = imgs[i];
+            if (img.src && img.src.indexOf("http") === 0) {
+              try {
+                var resp = await fetch(img.src);
+                var blob = await resp.blob();
+                var reader = new FileReader();
+                var dataUrl = await new Promise(function (resolve) {
+                  reader.onload = function () { resolve(reader.result); };
+                  reader.readAsDataURL(blob);
+                });
+                img.src = dataUrl;
+              } catch (e) { /* skip */ }
+            }
+          }
+
+          var canvas = await html2canvas(el, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#ffffff",
+            logging: false,
+          });
+
+          var { jsPDF } = window.jspdf;
+          var pdfOrientation = currentOrientation === "landscape" ? "l" : "p";
+          var pdf = new jsPDF(pdfOrientation, "mm", "a4");
+          var pt = 10, pr = 10, pb = 10, pl = 10;
+          var pw = pdf.internal.pageSize.getWidth();
+          var ph = pdf.internal.pageSize.getHeight();
+          var uw = pw - pl - pr;
+          var ih = (canvas.height * uw) / canvas.width;
+
+          if (ih + pt + pb <= ph) {
+            pdf.addImage(canvas.toDataURL("image/png"), "PNG", pl, pt, uw, ih);
+          } else {
+            var pos = 0, cph = ph - pt - pb;
+            while (pos < ih) {
+              var sy = (pos / ih) * canvas.height;
+              var sh = (cph / ih) * canvas.height;
+              if (sy + sh > canvas.height) sh = canvas.height - sy;
+              var pc = document.createElement("canvas");
+              pc.width = canvas.width;
+              pc.height = sh;
+              var ctx = pc.getContext("2d");
+              ctx.drawImage(canvas, 0, sy, canvas.width, sh, 0, 0, pc.width, pc.height);
+              var dh = (sh * uw) / canvas.width;
+              if (pos > 0) pdf.addPage();
+              pdf.addImage(pc.toDataURL("image/png"), "PNG", pl, pt, uw, dh);
+              pos += cph;
+            }
+          }
+
+          pdf.save((gr.branch ? gr.branch.branch_code : "") + "-" + gr.gr_number + ".pdf");
+          btn.disabled = false;
+          btn.textContent = "Download PDF";
+        } catch (e) {
+          console.error(e);
+          alert("PDF error");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bill Print</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Courier New', Courier, monospace;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+  }
+  .sheet {
+    max-width: 1280px;
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid #000;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 20px;
+    border-bottom: 2px solid #000;
+  }
+  .logo { width: 110px; height: 110px; flex-shrink: 0; }
+  .company-name {
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin: 0 0 4px 0;
+  }
+  .company-details { font-size: 15px; line-height: 1.5; margin: 0; }
+  .title-bar {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px;
+    border-bottom: 2px solid #000;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 2px solid #000;
+  }
+  .info-col { padding: 10px 20px; font-size: 15px; }
+  .info-col.right { border-left: 2px solid #000; }
+  .info-row { display: grid; grid-template-columns: 130px 1fr; margin-bottom: 4px; }
+  .info-row .label { font-weight: bold; }
+  .info-row .value { font-weight: bold; }
+
+  table.items {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  table.items th, table.items td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    text-align: left;
+  }
+  table.items th { font-weight: bold; }
+  table.items td.num, table.items th.num { text-align: right; }
+
+  .totals-row {
+    display: flex;
+    border-bottom: 2px solid #000;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .totals-row div { padding: 6px 12px; border-right: 1px solid #000; }
+  .totals-row div:last-child { border-right: none; margin-left: auto; }
+
+  .middle-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+  }
+  .words-pan {
+    border-right: 2px solid #000;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+  .words-pan .amount-words { text-align: center; font-weight: bold; margin: 40px 0; }
+  .words-pan .pan-gst { display: flex; gap: 40px; font-weight: bold; margin-top: 40px; }
+  .narration { margin-top: 20px; }
+
+  .charges-box { font-size: 15px; }
+  .charges-box .line {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 12px;
+  }
+  .charges-box .grand {
+    font-weight: bold;
+    font-size: 20px;
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .charges-box .due { font-weight: bold; }
+
+  .bank-section {
+    border-top: 2px solid #000;
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+  .bank-row { display: flex; gap: 10px; margin-bottom: 4px; font-weight: bold; }
+
+  .footer {
+    border-top: 2px solid #000;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  .footer .terms-title { font-weight: bold; font-size: 16px; margin-bottom: 6px; }
+  .footer .sig { text-align: center; }
+  .footer .sig .company { font-weight: bold; margin-bottom: 30px; }
+  .footer .sig .signature {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 28px;
+    color: #1a3fa0;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="header">
+    <img src="https://server.rpcompany.logisticsoftware.in/img/logo.png" alt="Company Logo" class="logo">
+    <div>
+      <p class="company-name">R P Company</p>
+      <p class="company-details">
+        354 to 359, Shop No. 3, 2nd Floor, Katra Hussain Bux, Khari Baoli, Delhi-110006<br>
+        MOB: 011-41329554<br>
+        GST NO- 07AHQPA6805N2ZY
+      </p>
+    </div>
+  </div>
+
+  <div class="title-bar">Tax Invoice Orignal</div>
+
+  <div class="info-grid">
+    <div class="info-col">
+      <div class="info-row"><span class="label">M/s. :</span><span class="value">MS DORTNET EXPRESS COURIER</span></div>
+      <div class="info-row"><span class="label">Address :</span><span class="value">HOUSE NO-124 ADARSH NAGAR NEW DELHI NORTH DELHI 110033</span></div>
+      <div class="info-row"><span class="label">State :</span><span class="value">DELHI &nbsp;&nbsp;&nbsp;&nbsp;State Code : 07</span></div>
+      <div class="info-row"><span class="label">GSTNo :</span><span class="value">07BBVPK6224P1ZUHSN Code : 996512</span></div>
+    </div>
+    <div class="info-col right">
+      <div class="info-row"><span class="label">Invoice No.</span><span class="value">: GST-26/27-1721</span></div>
+      <div class="info-row"><span class="label">Date</span><span class="value">: 11-07-2026</span></div>
+      <div class="info-row"><span class="label">SAC Code</span><span class="value"> : 01-07-2026 To 11-07-2026</span></div>
+      <div class="info-row"><span class="label">Place of Supply</span><span class="value">: HOUSE NO-124 ADARSH NAGAR NEW DELHI NORTH DELHI &nbsp;&nbsp;110033</span></div>
+    </div>
+  </div>
+
+  <table class="items">
+    <thead>
+      <tr>
+        <th>Sr</th><th>Lr Date</th><th>L.R. No</th><th>Goods Contains</th><th>Train</th>
+        <th>From City</th><th>To City</th><th class="num">Pkg</th><th class="num">SCH Chg</th>
+        <th class="num">WT.</th><th class="num">Rate</th><th class="num">Taxable Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>09-07-2026</td><td>ANVT-035785</td><td>HARD PARCEL</td><td></td>
+        <td>ANVT</td><td>BLS</td><td class="num">4</td><td class="num">0</td>
+        <td class="num">200.000</td><td class="num">13.00</td><td class="num">2600.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals-row">
+    <div>Total Pkg : 4</div>
+    <div>Total Weight : 200</div>
+    <div>Sub Total &nbsp;SCH Chg &nbsp;0</div>
+    <div>Additional Chg &nbsp;0.00</div>
+    <div>2600</div>
+  </div>
+
+  <div class="middle-grid">
+    <div class="words-pan">
+      <div class="amount-words">Rs.(in words): Two Thousand Seven Hundred and Thirty Rupees</div>
+      <div class="pan-gst">
+        <span>PAN No: &nbsp;AHQAPA6805N</span>
+        <span>GSTNo : &nbsp;07AHQPA6805N2ZY</span>
+      </div>
+      <div class="narration">Narration :</div>
+    </div>
+    <div class="charges-box">
+      <div class="line"><span>DISCOUNT</span><span>0.00</span></div>
+      <div class="line"><span>IGST 0.00%</span><span>0.00</span></div>
+      <div class="line"><span>CGST 2.50%</span><span>65.00</span></div>
+      <div class="line"><span>SGST 2.50%</span><span>65.00</span></div>
+      <div class="line"><span>ROUND OFF</span><span>0.00</span></div>
+      <div class="grand"><span>Grand Total</span><span>2730.00</span></div>
+      <div class="line due"><span>Previous Balance :</span><span>-2730</span></div>
+      <div class="line due"><span>Due Balance :</span><span>0</span></div>
+    </div>
+  </div>
+
+  <div class="bank-section">
+    <div class="bank-row"><span>Bank :</span><span>State Bank of India</span><span>CHURCH ROAD KASHMIRI GATE</span><span>A/C : 40977130995</span><span>IFSC No : SBIN0061299</span></div>
+    <div class="bank-row"><span>Bank :</span><span>Kotak Mahindra Bank</span><span>F-3/23,KRISHNA NAGAR</span><span>A/C : 7113441621</span><span>IFSC No : KKBK0004599</span></div>
+  </div>
+
+  <div class="footer">
+    <div>
+      <div class="terms-title">Terms &amp; Condition</div>
+      <div>1. Differences , if any may be notified within 7 days of Receipt of Bill</div>
+      <div>2. We Are Not Responsible For Any Transportation Damage.</div>
+      <div>3. Subject To Delhi Jurisdiction E.&amp;O.E.</div>
+      <div>4.Payment should be made by A/C Payee cheque Or DD in favor of "R P COMPANY"</div>
+      <div>5.Interest @24% PA will be charge if the invoice not paid within 10 days after submissions .</div>
+    </div>
+    <div class="sig">
+      <div class="company">R P Company</div>
+      <div class="signature">Mahesh arya</div>
+      <div>( Authorized Signatory )</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
